@@ -1,0 +1,51 @@
+.background1 {
+    background-color: #070707; black
+    width: 100%;
+    height: 80%;
+}
+
+.background2 {
+    background-color: #12117d; dark blue
+    width: auto;
+    height: 200px;
+}
+
+.backgroundImage {
+    width: 100%;
+}
+
+.background3 {
+    background-color: #cccccc; light grey
+    width: 100%;
+    height: 80%;
+}
+
+.title1 {
+  font-family: helvetica;
+  font-size: 5vw;
+  text-align: center;
+  color: #fe6302;
+}
+
+.titleFont {
+  font-family: helvetica;
+  font-size: 5vw;
+  text-align: center;
+  color: white;
+}
+
+.titleFont2 {
+  font-family: verdana;
+  font-size: 2vw;
+  color: white;
+  text-align: center;
+}
+
+.btn-default {
+  align-items: center;
+}
+
+.icon {
+  align-items: center-left;
+  width: 200px;
+}
