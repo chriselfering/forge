@@ -22,8 +22,11 @@
 
 .title1 {
   font-family: helvetica;
-  font-size: 5vw;
+  font: bold;
+  padding-left: 20px;
+  font-size: 10vw;
   text-align: center;
+  position: absolute;
   color: #fe6302;
 }
 
@@ -48,4 +51,9 @@
 .icon {
   align-items: center-left;
   width: 200px;
+}
+
+.icon2 {
+  align-items: center-left;
+  width: 15%;
 }
