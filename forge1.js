@@ -41,9 +41,9 @@ function onLoad () {
     data: {
         datasets: [{
             data: [
-                11,
+                15,
                 16,
-                7,
+                12,
                 3,
                 14
             ],
@@ -54,7 +54,7 @@ function onLoad () {
                 "#E7E9ED",
                 "#36A2EB"
             ],
-            label: 'My dataset' // for legend
+            label: 'Habits' // for legend
         }],
         labels: [
             "Meditate",
