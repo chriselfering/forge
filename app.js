@@ -1,16 +1,16 @@
 // inject the module ngRoute into our app
-angular.module('angularjsSimpleWebsiteApp', ['ngRoute'])
+angular.module('App', ['ngRoute'])
 
 // inject the service $routeProvider, from ngRoute
-angular.module('angularjsSimpleWebsiteApp').config(function ($routeProvider) {
+angular.module('App').config(function ($routeProvider) {
     $routeProvider.when( '/', {
-        templateUrl: '/views/main.html'
+        templateUrl: 'main.html'
     });
     $routeProvider.when( '/contact', {
-        templateUrl: '/views/contact.html'
+        templateUrl: 'contact.html'
     });
     $routeProvider.when( '/about', {
-        templateUrl: '/views/about.html',
+        templateUrl: 'about.html',
         controller : 'aboutCtrl',
     });
 
@@ -22,7 +22,7 @@ angular.module('angularjsSimpleWebsiteApp').config(function ($routeProvider) {
   })
 ;
 
-angular.module('angularjsSimpleWebsiteApp').controller('NavCtrl', ['$scope', '$location', NavCtrl])
+angular.module('App').controller('NavCtrl', ['$scope', '$location', NavCtrl])
 function NavCtrl( $scope, $location ) {
     var nc = this
     var foo = '' // by declaring this variable in an outer controller, I can guarantee that any inner controllers can access it too.
@@ -37,3 +37,9 @@ function NavCtrl( $scope, $location ) {
 angular.module('angularjsSimpleWebsiteApp').controller('aboutCtrl', function ($scope) {
     $scope.aboutText = 'Every page on this site is embedded inside the index.html';
 });
+
+angular.module('App')
+  .controller('HideCtlr',
+  function hideCtrl(){
+    
+  })

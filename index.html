@@ -1,17 +1,23 @@
 <!doctype html>
-<html>
+<html ng-app="angularjsSimpleWebsiteApp">
   <head>
     <meta charset="utf-8">
-    <title>demo site for an angularjs simple website</title>
+    <title>Demo Routing Site!!</title>
     <meta name="description" content="">
 
-    <!-- twitter bootstrap and additional styles -->
-    <link rel="stylesheet" href="styles/bootstrap.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- jQuery and Bootstrap -->
+    <script src="https://code.jquery.com/jquery-2.2.4.js" , integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="main.css">
+
+    <!-- the angular core and the ngRoute module -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.js"></script>
+
 
 
   </head>
-  <body ng-app="angularjsSimpleWebsiteApp" ng-controller='NavCtrl as nc' class='container'>
+  <body ng-controller='NavCtrl as nc' class='container'>
 
     <!-- header -->
     <!-- uses NavigationLinks as a controller -->
@@ -49,12 +55,10 @@
     <!-- // <script src="bower_components/jquery/jquery.js"></script> -->
 
 
-    <!-- the angular core and the ngRoute module -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.js"></script>
+
 
     <!-- the main angular app code -->
-    <script src="scripts/app.js"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>
