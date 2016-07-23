@@ -1,37 +1,67 @@
+.container {
+  margin-left: 20px;
+  margin-top: 20px;
+
+}
+
 .icon {
+  display: flex;
   width: 70px;
   display: inline-block;
   vertical-align: middle;
 }
 
 .icon2 {
-  width: 70px;
-  display: inline-block;
-  vertical-align: middle;
+  margin-top: 12%;
+  margin-left: 13%;
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.flexBox {
+  display: flex;
+  justify-content: space-around;
 }
 
 .iconDivPhys {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   display: inline-block;
-  margin-left: 20px;
-  margin-top: 20px;
+  justify-content: center;
   cursor: pointer;
   border-radius: 20px;
   border-style: hidden;
   background-color: #ff6d00; orange
 }
 
+.physText {
+  text-align: center;
+  color: #ff6d00; orange
+  font-size: 50px;
+}
+
+.finText {
+  text-align: center;
+  color: #8ae429; green
+  font-size: 50px;
+}
+
 .iconDivFin {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   display: inline-block;
-  margin-left: 20px;
-  margin-top: 20px;
+  justify-content: center;
   cursor: pointer;
   border-radius: 20px;
   border-style: hidden;
-  background-color: green;
+  background-color: #8ae429; green
+}
+
+.divBreak {
+  height: 200px;
 }
 
 .navBar {
@@ -39,13 +69,13 @@
 }
 
 .title1 {
+
+
+  vertical-align: middle;
   font-size: 45px;
   color: #ff6d00; orange;
   display: inline-block;
   margin-left: 10px;
-  margin-bottom: 105px;
-  text-align: left;
-  vertical-align: bottom;
   font-weight: bold;
 }
 

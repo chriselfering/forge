@@ -17,9 +17,11 @@
 </head>
 
 <body>
-    <div>
+    <div class="container">
         <img src="assets/brand.png" class="icon">
         <span class="title1">forge</span>
+    </div>
+
 
         <!-- nav bar -->
         <ul class="nav nav-tabs navbar-right navBar">
@@ -27,37 +29,36 @@
             <li role="presentation"><a href="#">Dashboard</a></li>
             <li role="presentation"><a href="#">Lists</a></li>
         </ul>
-    </div>
+
+    <div class="divBreak"></div>
 
     <!-- row1 -->
-    <div ng-click="" ng-hide="" class="iconDivPhys">
+    <div class="flexBox">
+      <div ng-click="" ng-hide="" class="iconDivPhys">
         <img src="assets/physical.png" class="icon2"/>
-    </div>
-    <div ng-click="" ng-hide="" class="iconDivFin">
+        <h2 class="physText"> PHYSICAL </h2>
+      </div>
+      <div ng-click="" ng-hide="" class="iconDivFin">
         <img src="assets/money.png" class="icon2"/>
+        <h2 class="finText"> FINANCIAL </h2>
+      </div>
     </div>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="divBreak"></div>
 
     <!-- row2 -->
-    <div ng-click="" ng-hide="" class="iconDivPhys">
-        <img src="assets/strength.png" class="icon2"/>
-    </div>
-    <div ng-click="" ng-hide="" class="iconDivPhys">
-        <img src="assets/speed.png" class="icon2"/>
+    <div class="flexBox">
+      <div ng-click="" ng-hide="" class="iconDivPhys">
+          <img src="assets/strength.png" class="icon2"/>
+          <h2 class="physText"> STRENGTH </h2>
+      </div>
+      <div ng-click="" ng-hide="" class="iconDivPhys">
+          <img src="assets/speed.png" class="icon2"/>
+          <h2 class="physText"> SPEED </h2>
+      </div>
     </div>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="divBreak"></div>
 
     <!-- row3 -->
     <div ng-click="" ng-hide="" class="inputTitle">
@@ -77,6 +78,17 @@
         <input required placeholder="25" type="number" class="input"></input>
         <p>Current (minutes)</p>
         <input required placeholder="42" type="number" class="input"></input>
+        <p>By When</p>
+        <input required placeholder="mm/dd/yyyy" class="input"></input>
+    </div>
+
+    <div ng-click="" ng-hide="" class="inputTitle">
+        <p>Name of Goal</p>
+        <input required placeholder="Rainy Day Fund" type="text" class="input"></input>
+        <p>Goal ($)</p>
+        <input required placeholder="$10,000" type="currency" class="input"></input>
+        <p>Current ($)</p>
+        <input required placeholder="$5,000" type="currency" class="input"></input>
         <p>By When</p>
         <input required placeholder="mm/dd/yyyy" class="input"></input>
     </div>
