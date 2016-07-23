@@ -1,7 +1,7 @@
 angular.module('App', [])
 
 angular.module('App')
-  .container()
+  .controller()
 
 // inject the module ngRoute into our app
 angular.module('App', ['ngRoute'])

@@ -3,7 +3,6 @@
   background-size: 100%;
   background-repeat: no-repeat;
   padding-top: 10px;
-  padding-left: 10px;
 }
 
 .container {
@@ -25,6 +24,7 @@
   width: 70px;
   display: inline-block;
   vertical-align: middle;
+  margin-left: 10px;
 }
 
 .icon2 {
@@ -56,14 +56,14 @@
 .physText {
   text-align: center;
   color: #ff6d00; orange
-  font-size: 50px;
+  font-size: 100px;
   font-weight: 900;
 }
 
 .finText {
   text-align: center;
   color: #8ae429; green
-  font-size: 50px;
+  font-size: 100px;
   font-weight: 900;
 }
 
@@ -80,6 +80,7 @@
 
 .divBreak {
   height: 400px;
+  width: 100%;
 }
 
 .divBreakSmall {
