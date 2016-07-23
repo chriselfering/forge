@@ -1,7 +1,26 @@
+/*.header {
+  background-color: #1f0971; dark blue;
+  border-bottom: 0px;
+}*/
+
+.background {
+  background-image: url(assets/workHarder3.jpeg);
+  background-size: 1400px;
+  background-repeat: no-repeat;
+}
+
 .container {
   margin-left: 20px;
   margin-top: 20px;
+  background-color: #1f0971; dark blue;
 
+}
+
+.textCenter {
+  font-size: 5vw;
+  font-weight: 100;
+  color: grey;
+  text-align: center;
 }
 
 .icon {
@@ -41,12 +60,14 @@
   text-align: center;
   color: #ff6d00; orange
   font-size: 50px;
+  font-weight: 900;
 }
 
 .finText {
   text-align: center;
   color: #8ae429; green
   font-size: 50px;
+  font-weight: 900;
 }
 
 .iconDivFin {
@@ -61,7 +82,15 @@
 }
 
 .divBreak {
-  height: 200px;
+  height: 400px;
+}
+
+.divBreakSmall {
+  height: 50px;
+}
+
+.divBreakMd {
+  height: 100px;
 }
 
 .navBar {
@@ -69,8 +98,6 @@
 }
 
 .title1 {
-
-
   vertical-align: middle;
   font-size: 45px;
   color: #ff6d00; orange;
@@ -83,15 +110,30 @@
   margin-left: 20px;
 }
 
+.physBtn {
+  background-color: #ff6d00; orange;
+  color: white;
+}
+
+.finBtn {
+  background-color: #8ae429; green;
+  color: white;
+}
+
 .input {
   font-size: 20px;
   margin-bottom: 25px;
-  margin-left: 20px;
 }
 
 .inputTitle {
   margin-left: 20px;
   display: inline-block;
+}
+
+.divForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Space out content a bit */
@@ -101,7 +143,6 @@ body {
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
 .marketing,
 .footer {
   padding-left: 15px;
@@ -109,15 +150,6 @@ body {
 }
 
 /* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
 }
 
 /* Custom page footer */
@@ -158,16 +190,12 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
-  .header,
   .marketing,
   .footer {
     padding-left: 0;
     padding-right: 0;
   }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
+
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
