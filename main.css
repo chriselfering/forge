@@ -1,12 +1,9 @@
-/*.header {
-  background-color: #1f0971; dark blue;
-  border-bottom: 0px;
-}*/
-
 .background {
   background-image: url(assets/workHarder3.jpeg);
-  background-size: 1400px;
+  background-size: 100%;
   background-repeat: no-repeat;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .container {
@@ -128,12 +125,16 @@
 .inputTitle {
   margin-left: 20px;
   display: inline-block;
+  color: white;
 }
 
 .divForm {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #1f0971; dark blue;
+  padding-top: 20px;
+  padding-bottom: 150px;
 }
 
 /* Space out content a bit */
