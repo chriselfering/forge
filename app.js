@@ -1,3 +1,5 @@
+angular.module('App', [])
+
 // inject the module ngRoute into our app
 angular.module('App', ['ngRoute'])
 
@@ -41,5 +43,5 @@ angular.module('angularjsSimpleWebsiteApp').controller('aboutCtrl', function ($s
 angular.module('App')
   .controller('HideCtlr',
   function hideCtrl(){
-    
+
   })

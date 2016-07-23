@@ -1,16 +1,37 @@
 .icon {
   width: 70px;
   display: inline-block;
-  margin-left: 50px;
-  margin-bottom: 100px;
+  vertical-align: middle;
 }
 
-.iconDiv {
-  width: 30%;
+.icon2 {
+  width: 70px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.iconDivPhys {
+  width: 100px;
+  height: 100px;
   display: inline-block;
   margin-left: 20px;
   margin-top: 20px;
-  position: relative;
+  cursor: pointer;
+  border-radius: 20px;
+  border-style: hidden;
+  background-color: #ff6d00; orange
+}
+
+.iconDivFin {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  border-style: hidden;
+  background-color: green;
 }
 
 .navBar {
@@ -30,6 +51,17 @@
 
 .submitBtn {
   margin-left: 20px;
+}
+
+.input {
+  font-size: 20px;
+  margin-bottom: 25px;
+  margin-left: 20px;
+}
+
+.inputTitle {
+  margin-left: 20px;
+  display: inline-block;
 }
 
 /* Space out content a bit */

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="App">
+<!-- <html ng-app="App"> -->
 
 <head>
     <meta charset="utf-8">
@@ -7,58 +7,79 @@
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="main.css">
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
     <!-- Angular main and route CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.js"></script>
-<!-- end of scripts -->
+    <!-- end of scripts -->
 
     <title>forge: Make Yourself</title>
 </head>
+
 <body>
-  <div>
-  <img src="assets/brand.png" class="icon">
-  <span class="title1">forge</span>
+    <div>
+        <img src="assets/brand.png" class="icon">
+        <span class="title1">forge</span>
 
-  <!-- nav bar -->
-  <ul class="nav nav-tabs navbar-right navBar">
-    <li role="presentation" class="active"><a href="#">Home</a></li>
-    <li role="presentation"><a href="#">Dashboard</a></li>
-    <li role="presentation"><a href="#">Lists</a></li>
-  </ul>
-</div>
+        <!-- nav bar -->
+        <ul class="nav nav-tabs navbar-right navBar">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Dashboard</a></li>
+            <li role="presentation"><a href="#">Lists</a></li>
+        </ul>
+    </div>
 
-<!-- row1 -->
-<div ng-click="" ng-hide="" class="iconDiv">
-  <img src="assets/physical.png" class="iconDiv"/>
-</div>
-<div ng-click="" ng-hide="" class="iconDiv">
-  <img src="assets/money.png" class="iconDiv"/>
-</div>
+    <!-- row1 -->
+    <div ng-click="" ng-hide="" class="iconDivPhys">
+        <img src="assets/physical.png" class="icon2"/>
+    </div>
+    <div ng-click="" ng-hide="" class="iconDivFin">
+        <img src="assets/money.png" class="icon2"/>
+    </div>
 
-<br><br><br><br><br><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-<!-- row2 -->
-<div ng-click="" ng-hide="" class="iconDiv">
-  <img src="assets/strength.png" class="iconDiv"/>
-</div>
-<div ng-click="" ng-hide="" class="iconDiv">
-  <img src="assets/speed.png" class="iconDiv"/>
-</div>
+    <!-- row2 -->
+    <div ng-click="" ng-hide="" class="iconDivPhys">
+        <img src="assets/strength.png" class="icon2"/>
+    </div>
+    <div ng-click="" ng-hide="" class="iconDivPhys">
+        <img src="assets/speed.png" class="icon2"/>
+    </div>
 
-<br><br><br><br><br><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-<!-- row3 -->
-<div ng-click="" ng-hide="" class="iconDiv">
-  <input>Name of Goal</input>
-  <input>Goal (lbs)</input>
-  <input>Current (lbs)</input>
-</div>
-<div ng-click="" ng-hide="" class="iconDiv">
-  <input>Name of Goal</input>
-  <input>Goal (Minutes)</input>
-  <input>Current (Minutes)</input>
-</div>
+    <!-- row3 -->
+    <div ng-click="" ng-hide="" class="inputTitle">
+        <p>Name of Goal</p>
+        <input required placeholder="Deadlift" type="text" class="input"></input>
+        <p>Goal (lbs)</p>
+        <input required placeholder="400" type="number" class="input"></input>
+        <p>Current (lbs)</p>
+        <input required placeholder="185" type="number" class="input"></input>
+        <p>By When</p>
+        <input required placeholder="mm/dd/yyyy" class="input"></input>
+    </div>
+    <div ng-click="" ng-hide="" class="inputTitle">
+        <p>Name of Goal</p>
+        <input required placeholder="Run 5k" type="text" class="input"></input>
+        <p>Goal (minutes)</p>
+        <input required placeholder="25" type="number" class="input"></input>
+        <p>Current (minutes)</p>
+        <input required placeholder="42" type="number" class="input"></input>
+        <p>By When</p>
+        <input required placeholder="mm/dd/yyyy" class="input"></input>
+    </div>
 
 </body>
 
