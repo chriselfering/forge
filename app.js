@@ -1,4 +1,7 @@
 angular.module('App', [])
 
 angular.module('App')
-  .controller()
+  .controller(MainCtlr,
+    function() {
+      
+    })
