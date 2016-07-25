@@ -1,5 +1,5 @@
 .background {
-  background-image: url(assets/workHarder3.jpeg);
+  background-image: url(assets/workHarder4.jpeg);
   background-size: 100%;
   background-repeat: no-repeat;
   padding-top: 10px;
@@ -121,6 +121,7 @@
 .input {
   font-size: 20px;
   margin-bottom: 25px;
+  color: black;
 }
 
 .inputTitle {
@@ -189,17 +190,6 @@ body {
   margin-top: 28px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.glyphicon glyphicon-th {
+  display: inline-block;
 }

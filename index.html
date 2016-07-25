@@ -11,12 +11,14 @@
     <!-- Angular main and route CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
     <!-- end of scripts -->
 
     <title>forge: Make Yourself</title>
 </head>
 
-<body ng-controller="">
+<body ng-controller="MainCtlr">
     <div class="background">
         <img src="assets/brand.png" class="icon">
         <span class="title1">forge</span>
@@ -36,11 +38,11 @@
 
         <!-- row1 -->
         <div class="flexBox">
-            <div ng-click="" ng-hide="" class="iconDivPhys">
+            <div ng-click="phys = !phys" ng-hide="fin" class="iconDivPhys">
                 <img src="assets/physical.png" class="icon2" />
                 <h2 class="physText"> PHYSICAL </h2>
             </div>
-            <div ng-click="" ng-hide="" class="iconDivFin">
+            <div ng-click="fin = !fin" ng-hide="phys" class="iconDivFin">
                 <img src="assets/money.png" class="icon2" />
                 <h2 class="finText"> FINANCIAL </h2>
             </div>
@@ -50,11 +52,11 @@
 
         <!-- row2 -->
         <div class="flexBox">
-            <div ng-click="" ng-hide="" class="iconDivPhys">
+            <div ng-click="str = !str" ng-show="phys" class="iconDivPhys">
                 <img src="assets/strength.png" class="icon2" />
                 <h2 class="physText"> STRENGTH </h2>
             </div>
-            <div ng-click="" ng-hide="" class="iconDivPhys">
+            <div ng-click="spd = !spd" ng-show="phys" class="iconDivPhys">
                 <img src="assets/speed.png" class="icon2" />
                 <h2 class="physText"> SPEED </h2>
             </div>
@@ -64,7 +66,7 @@
 
         <!-- row3 -->
         <div class="divForm">
-            <div ng-click="" ng-hide="" class="inputTitle">
+            <div ng-show="str" class="inputTitle">
                 <h4>Name of Goal</h4>
                 <input required placeholder="Deadlift" type="text" class="input"></input>
                 <h4>Goal (lbs)</h4>
@@ -89,7 +91,7 @@
                 <br>
             </div>
 
-            <div ng-click="" ng-hide="" class="inputTitle">
+            <div ng-show="spd" class="inputTitle">
                 <h4>Name of Goal</h4>
                 <input required placeholder="Run 5k" type="text" class="input"></input>
                 <h4>Goal (minutes)</h4>
@@ -114,7 +116,7 @@
             </div>
             <br>
 
-            <div ng-click="" ng-hide="" class="inputTitle">
+            <div ng-click="" ng-show="fin" class="inputTitle">
                 <h4>Name of Goal</h4>
                 <input required placeholder="Rainy Day Fund" type="text" class="input"></input>
                 <h4>Goal ($)</h4>
