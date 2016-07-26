@@ -53,27 +53,9 @@
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
   background-color: #1f0971;
-  color:black;
-  box-shadow: 2px 2px 1px black;
+  padding-bottom: 7px;
+
 }
-
-/*.box:active {
-  -webkit-transition-duration: 1s;
-   -moz-transition-duration: 1s;
-   -o-transition-duration: 1s;
-    transition-duration: 1s;
-   -webkit-transition-property: -webkit-transform;
-   -moz-transition-property: -moz-transform;
-   -o-transition-property: -o-transform;
-    transition-property: transform;*/
-/*}*/
-
-/*.crossRotate:hover {
-   -webkit-transform: rotate(45deg);
-   -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}*/
-/*}*/
 
 .iconDivPhys {
   width: 200px;
@@ -109,7 +91,6 @@
   border-style: hidden;
   background-color: #8ae429; green
 }
-
 
 .divBreak {
   height: 400px;
@@ -149,7 +130,7 @@
 
 .finBtn {
   background-color: #8ae429; green;
-  color: white;
+  color: #1f0971; dark blue;
 }
 
 .input {
@@ -171,57 +152,6 @@
   background-color: #1f0971; dark blue;
   padding-top: 20px;
   padding-bottom: 150px;
-}
-
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
 }
 
 .glyphicon glyphicon-th {
