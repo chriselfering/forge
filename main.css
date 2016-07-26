@@ -157,3 +157,43 @@
 .glyphicon glyphicon-th {
   display: inline-block;
 }
+
+/*// =====================================================================================
+// D3 Chart
+// =====================================================================================*/
+
+/*.chart div {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  position: relative;
+  width: 960px;
+  height: 960px;
+  font: 10px sans-serif;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}*/
+
+/*// =====================================================================================
+// BAR CHART PRACTICE
+// =====================================================================================*/
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
