@@ -224,8 +224,8 @@ form {
 }
 
 .axis path, .axis line {
-  fill: none;
-  stroke: #000;
+  fill: white;
+  stroke: black;
   shape-rendering: crispEdges;
 }
 .y.axis path, .y.axis line {
