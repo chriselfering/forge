@@ -2,26 +2,179 @@ angular.module('App', ['ngRoute'])
 
 angular.module('App')
   .controller('Goals', Goals)
-  .controller('chartCtrl', chartCtrl)
+  .controller('ChartCtrl', ChartCtrl)
 
-    function chartCtrl() {
+    function ChartCtrl() {
+      console.log('Chart Controller reporting for duty!')
+
+      var ChartCtrl = this;
+
+      /*// =====================================================================================
+      // Chart 1
+      // =====================================================================================*/
+
+      var data = [
+      { name        : "Squats",
+        population  : "158"},
+      { name        : "Deadlifts",
+        population  : "245"},
+      { name        : "Bench Press",
+        population  : "185"},
+      { name        : "Overhead Press",
+        population  : "134"}
+      ]
+
+      var outerWidth = 500;
+      var outerHeight = 250;
+      var margin = { left: 200, top: 0, right: 0, bottom: 30 };
+      var barPadding = 0.2;
+
+      var xColumn = "population";
+      var yColumn = "name";
+
+      var innerWidth  = outerWidth  - margin.left - margin.right;
+      var innerHeight = outerHeight - margin.top  - margin.bottom;
+
+      var svg = d3.select(".chart1").append("svg")
+        .attr("width",  outerWidth)
+        .attr("height", outerHeight);
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var xAxisG = g.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + innerHeight + ")");
+      var yAxisG = g.append("g")
+        .attr("class", "y axis");
+
+      var xScale = d3.scale.linear().range(      [0, innerWidth]);
+      var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding);
+
+      var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+        .ticks(5)                   // Use approximately 5 ticks marks.
+        .tickFormat(d3.format("s")) // Use intelligent abbreviations, e.g. 5M for 5 Million
+        .outerTickSize(0);          // Turn off the marks at the end of the axis.
+      var yAxis = d3.svg.axis().scale(yScale).orient("left")
+        .outerTickSize(0);          // Turn off the marks at the end of the axis.
+
+      function render(data){
+
+        xScale.domain([0, d3.max(data, function (d){ return d[xColumn]; })]);
+        yScale.domain(       data.map( function (d){ return d[yColumn]; }));
+
+        xAxisG.call(xAxis);
+        yAxisG.call(yAxis);
+
+        var bars = g.selectAll("rect").data(data);
+        bars.enter().append("rect")
+          .attr("height", yScale.rangeBand());
+        bars
+          .attr("x", 0)
+          .attr("y",     function (d){ return yScale(d[yColumn]); })
+          .attr("width", function (d){ return xScale(d[xColumn]); });
+        bars.exit().remove();
+      }
+
+      function type(d){
+        d.population = +d.population;
+        return d;
+      }
+
+      render(data)
+
+      // ====================================================================
+
+      // =====================================================================================
+     // Chart 2
+     // =====================================================================================*/
+
+     var data = [
+     { name        : "Rainy Day Fund",
+       amount  : "158"},
+     { name        : "Retirement",
+       amount  : "245"},
+     { name        : "Car",
+       amount  : "185"},
+     { name        : "House",
+       amount  : "134"}
+     ]
+
+     var outerWidth = 500;
+     var outerHeight = 250;
+     var margin = { left: 200, top: 0, right: 0, bottom: 30 };
+     var barPadding = 0.2;
+
+     var xColumn = "amount";
+     var yColumn = "name";
+
+     var innerWidth  = outerWidth  - margin.left - margin.right;
+     var innerHeight = outerHeight - margin.top  - margin.bottom;
+
+     var svg = d3.select(".chart2").append("svg")
+       .attr("width",  outerWidth)
+       .attr("height", outerHeight);
+     var g = svg.append("g")
+       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+     var xAxisG = g.append("g")
+       .attr("class", "x axis")
+       .attr("transform", "translate(0," + innerHeight + ")");
+     var yAxisG = g.append("g")
+       .attr("class", "y axis");
+
+     var xScale = d3.scale.linear().range(      [0, innerWidth]);
+     var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding);
+
+     var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+       .ticks(5)                   // Use approximately 5 ticks marks.
+       .tickFormat(d3.format("s")) // Use intelligent abbreviations, e.g. 5M for 5 Million
+       .outerTickSize(0);          // Turn off the marks at the end of the axis.
+     var yAxis = d3.svg.axis().scale(yScale).orient("left")
+       .outerTickSize(0);          // Turn off the marks at the end of the axis.
+
+     function render(data){
+
+       xScale.domain([0, d3.max(data, function (d){ return d[xColumn]; })]);
+       yScale.domain(       data.map( function (d){ return d[yColumn]; }));
+
+       xAxisG.call(xAxis);
+       yAxisG.call(yAxis);
+
+       var bars = g.selectAll("rect").data(data);
+       bars.enter().append("rect")
+         .attr("height", yScale.rangeBand());
+       bars
+         .attr("x", 0)
+         .attr("y",     function (d){ return yScale(d[yColumn]); })
+         .attr("width", function (d){ return xScale(d[xColumn]); });
+       bars.exit().remove();
+     }
+
+     function type(d){
+       d.population = +d.population;
+       return d;
+     }
+
+     render(data)
+
+     // ====================================================================
+
+
       // =====================================================================================
       // BAR CHART PRACTICE
       // =====================================================================================
 
-      var data = [4, 8, 15, 16, 23, 42];
-
-      var x = d3.scale.linear()
-          .domain([0, d3.max(data)])
-          .range([0, 420]);
-
-      d3.select(".chart")
-        .selectAll("div")
-          .data(data)
-        .enter().append("div")
-          .style("width", function(d) { return x(d) + "px"; })
-          .text(function(d) { return d; })
-          .text("Squats", "Deadlifts", "Bench");
+      // var data = [4, 8, 15, 16, 23, 42];
+      //
+      // var x = d3.scale.linear()
+      //     .domain([0, d3.max(data)])
+      //     .range([0, 420]);
+      //
+      // d3.select(".chart")
+      //   .selectAll("div")
+      //     .data(data)
+      //   .enter().append("div")
+      //     .style("width", function(d) { return x(d) + "px"; })
+      //     .text(function(d) { return d; })
+      //     .text("Squats", "Deadlifts", "Bench");
 
       /*// =====================================================================================
       // D3 Chart
@@ -197,7 +350,6 @@ angular.module('App').config(function ($routeProvider) {
 
   $routeProvider.when('/dashboard', {
     templateUrl : '/views/dashboard.html',
-    controller  : 'chartCtrl',
   });
   $routeProvider.when('/habits', {
     templateUrl : '/views/habits.html'

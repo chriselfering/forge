@@ -69,16 +69,14 @@
 
 .physText {
   text-align: center;
-  color: #ff6d00; orange
-  font-size: 100px;
-  font-weight: 900;
+  color: #ff6d00; orange;
+  font-weight: bolder;
 }
 
 .finText {
   text-align: center;
-  color: #8ae429; green
-  font-size: 100px;
-  font-weight: 900;
+  color: #8ae429; green;
+  font-weight: bolder;
 }
 
 .iconDivFin {
@@ -158,6 +156,38 @@
   display: inline-block;
 }
 
+.physChartText {
+  color: white;
+  margin: 20px;
+}
+
+.finChartText {
+  color: black;
+  margin: 20px;
+}
+
+.DivStr {
+  display: inline-block;
+  margin-left: 10px;
+  background-color: #ff6d00; orange;
+  color: white;
+  padding: 50px;
+
+}
+
+.chartDivStr {
+  display: inline-block;
+  margin-left: 10px;
+  background-color: #ff6d00; orange;
+  padding: 50px;
+}
+
+.chartDivFin {
+  display: inline-block;
+  margin-left: 10px;
+  background-color: #8ae429; green;
+  padding: 50px;
+}
 /*// =====================================================================================
 // D3 Chart
 // =====================================================================================*/
@@ -186,14 +216,18 @@ form {
 }*/
 
 /*// =====================================================================================
-// BAR CHART PRACTICE
+// Horizontal Bar Chart
 // =====================================================================================*/
+.axis text {
+  font: 16pt sans-serif;
+  font-family: 'Poiret One', cursive;
+}
 
-.chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 5px;
-  color: white;
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.y.axis path, .y.axis line {
+  stroke: none;
 }

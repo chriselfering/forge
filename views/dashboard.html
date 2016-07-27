@@ -1,18 +1,25 @@
 <div>
   <div class="divBreak"></div>
 
-  <h1>Dashboard</h1>
-  <div class="chart">
-   <!-- <form>
-  <label><input type="radio" name="mode" value="grouped"> Grouped</label>
-  <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
-</form> -->
-  </div>
+
+<div class="divStr">
+  <ul>
+    <h2> PERSONAL RECORDS </h2>
+    <li> {{goal1.name}} : {{goal1.value}}</li>
+    <li> {{goal2.name}} : {{goal2.value}}</li>
+    <li> {{goal3.name}} : {{goal3.value}}</li>
+  <ul>
 </div>
 
-<!-- /*// =====================================================================================
-// BAR CHART PRACTICE
-// =====================================================================================*/ -->
+<div class="chartDivStr">
+  <h1 class="physChartText">Physical Goals</h1>
+  <div class="chart1"></div>
+</div>
+<br>
 
-<!-- <div class="chart">Chart goes here</div>
-<script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script> -->
+<div class="chartDivFin">
+  <h1 class="finChartText">Financial Goals</h1>
+  <div class="chart2"></div>
+</div>
+
+  <div ng-controller="ChartCtrl as ChartCtrl"></div>
