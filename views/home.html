@@ -43,15 +43,18 @@
 <div class="divForm">
     <div ng-show="str" class="inputTitle">
         <h4>Name of Goal</h4>
-        <input required placeholder="Deadlift" type="text" class="input"></input>
+<form ng-submit="Goals.addGoal(Goals.name, Goals.goal, Goals.current, Goals.byWhen)">
+        <input ng-model="Goals.name" required="true" placeholder="Deadlift" type="text" class="input"></input>
         <h4>Goal (lbs)</h4>
-        <input required placeholder="400" type="number" class="input"></input>
+        <input ng-model="Goals.goal" required="true" placeholder="400" type="number" class="input"></input>
         <h4>Current (lbs)</h4>
-        <input required placeholder="185" type="number" class="input"></input>
+        <input ng-model="Goals.current" required="true" placeholder="185" type="number" class="input"></input>
         <h4>By When</h4>
-        <input required placeholder="mm/dd/yyyy" class="input"></input>
+        <input ng-model="Goals.byWhen" required="true" placeholder="mm/dd/yyyy" class="input"></input>
         <br>
-        <div class="btn-group">
+        <input type="submit" class="btn btn-default physBtn"></input>
+        </form>
+        <!-- <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle physBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Add Goal <span class="caret"></span>
             </button>
@@ -62,7 +65,8 @@
                 <li role="separator" class="divider"></li>
                 <li><a href="#">No more goals!</a></li>
             </ul>
-        </div>
+        </div> -->
+
         <br>
     </div>
 

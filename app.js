@@ -3,33 +3,68 @@ angular.module('App', ['ngRoute'])
 angular.module('App')
   .controller('Goals', Goals)
   .controller('ChartCtrl', ChartCtrl)
+  .factory('StrFactory', StrFactory)
+  //
+  function ChartCtrl(StrFactory) {
+    console.log('Chart Controller reporting for duty!')
 
-    function ChartCtrl() {
-      console.log('Chart Controller reporting for duty!')
+    var ChartCtrl = this;
+  }
 
-      var ChartCtrl = this;
+// ===============================================================
+// Strength Factory
+// ===============================================================
 
-      /*// =====================================================================================
-      // Chart 1
-      // =====================================================================================*/
+ChartCtrl.$inject = ['StrFactory']
 
-      var data = [
-      { name        : "Squats",
-        population  : "158"},
-      { name        : "Deadlifts",
-        population  : "245"},
-      { name        : "Bench Press",
-        population  : "185"},
-      { name        : "Overhead Press",
-        population  : "134"}
-      ]
+function StrFactory () {
+  console.log('Strength Factory reporting for duty!')
+
+  var str = this;
+
+  // str.name = ''
+  // str.goal = 0
+  // str.current = 0
+  // str.byWhen = 0;
+
+  str.goalArray = [];
+
+  function StrGoal (name, goal, current, byWhen) { //constructor
+    this.name     = name;
+    this.goal     = goal;
+    this.current  = current;
+    this.byWhen   = byWhen
+  }
+
+  str.addGoal = function(name, goal, current, byWhen) {
+    console.log('Congratulations on submitting a goal!');
+
+var newStrGoal = new StrGoal (name, goal, current, byWhen)
+str.goalArray.push(newStrGoal)
+
+console.log("new object array", str.goalArray)
+
+
+  }
+return str;
+}
+
+function ChartCtrl (StrFactory) {
+  console.log('ChartCtrl ready!')
+
+
+// =================================================================================
+// Chart 1
+// ==============================================================================
+
+      var data = StrFactory.goalArray;
 
       var outerWidth = 500;
       var outerHeight = 250;
       var margin = { left: 200, top: 0, right: 0, bottom: 30 };
       var barPadding = 0.2;
 
-      var xColumn = "population";
+      var xColumn = "current";
       var yColumn = "name";
 
       var innerWidth  = outerWidth  - margin.left - margin.right;
@@ -81,11 +116,9 @@ angular.module('App')
 
       render(data)
 
-      // ====================================================================
-
-      // =====================================================================================
-     // Chart 2
-     // =====================================================================================*/
+// ======================================================================
+// Chart 2
+// =======================================================================
 
      var data = [
      { name        : "Rainy Day Fund",
@@ -154,163 +187,22 @@ angular.module('App')
      }
 
      render(data)
-
-     // ====================================================================
-
-
-      // =====================================================================================
-      // BAR CHART PRACTICE
-      // =====================================================================================
-
-      // var data = [4, 8, 15, 16, 23, 42];
-      //
-      // var x = d3.scale.linear()
-      //     .domain([0, d3.max(data)])
-      //     .range([0, 420]);
-      //
-      // d3.select(".chart")
-      //   .selectAll("div")
-      //     .data(data)
-      //   .enter().append("div")
-      //     .style("width", function(d) { return x(d) + "px"; })
-      //     .text(function(d) { return d; })
-      //     .text("Squats", "Deadlifts", "Bench");
-
-      /*// =====================================================================================
-      // D3 Chart
-      // =====================================================================================*/
-      // var data = {
-      //   y: [1, 4, 6, 8, 10, 15],
-      //   y0: [2, 5, 7, 9, 11, 16]
-      // }
-      //
-      //
-      // var n = 4, // number of layers
-      //     m = 58, // number of samples per layer
-      //     stack = d3.layout.stack(),
-      //     layers = stack(d3.range(n).map(function() { return bumpLayer(m, .1); })),
-      //     yGroupMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y; }); }),
-      //     yStackMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); });
-      //
-      // var margin = {top: 40, right: 10, bottom: 20, left: 10},
-      //     width = 960 - margin.left - margin.right,
-      //     height = 500 - margin.top - margin.bottom;
-      //
-      // var x = d3.scale.ordinal()
-      //     .domain(d3.range(m))
-      //     .rangeRoundBands([0, width], .08);
-      //
-      // var y = d3.scale.linear()
-      //     .domain([0, yStackMax])
-      //     .range([height, 0]);
-      //
-      // var color = d3.scale.linear()
-      //     .domain([0, n - 1])
-      //     .range(["#aad", "#556"]);
-      //
-      // var xAxis = d3.svg.axis()
-      //     .scale(x)
-      //     .tickSize(0)
-      //     .tickPadding(6)
-      //     .orient("bottom");
-      //
-      // var svg = d3.select(".chart1").append("svg")
-      //     .attr("width", width + margin.left + margin.right)
-      //     .attr("height", height + margin.top + margin.bottom)
-      //   .append("g")
-      //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-      //
-      // var layer = svg.selectAll(".layer")
-      //     .data(layers)
-      //   .enter().append("g")
-      //     .attr("class", "layer")
-      //     .style("fill", function(d, i) { return color(i); });
-      //
-      // var rect = layer.selectAll("rect")
-      //     .data(function(d) { return d; })
-      //   .enter().append("rect")
-      //     .attr("x", function(d) { return x(d.x); })
-      //     .attr("y", height)
-      //     .attr("width", x.rangeBand())
-      //     .attr("height", 0);
-      //
-      // rect.transition()
-      //     .delay(function(d, i) { return i * 10; })
-      //     .attr("y", function(d) { return y(d.y0 + d.y); })
-      //     .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); });
-      //
-      // svg.append("g")
-      //     .attr("class", "x axis")
-      //     .attr("transform", "translate(0," + height + ")")
-      //     .call(xAxis);
-      //
-      // d3.selectAll("input").on("change", change);
-      //
-      // var timeout = setTimeout(function() {
-      //   d3.select("input[value=\"grouped\"]").property("checked", true).each(change);
-      // }, 2000);
-      //
-      // function change() {
-      //   clearTimeout(timeout);
-      //   if (this.value === "grouped") transitionGrouped();
-      //   else transitionStacked();
-      // }
-      //
-      // function transitionGrouped() {
-      //   y.domain([0, yGroupMax]);
-      //
-      //   rect.transition()
-      //       .duration(500)
-      //       .delay(function(d, i) { return i * 10; })
-      //       .attr("x", function(d, i, j) { return x(d.x) + x.rangeBand() / n * j; })
-      //       .attr("width", x.rangeBand() / n)
-      //     .transition()
-      //       .attr("y", function(d) { return y(d.y); })
-      //       .attr("height", function(d) { return height - y(d.y); });
-      // }
-      //
-      // function transitionStacked() {
-      //   y.domain([0, yStackMax]);
-      //
-      //   rect.transition()
-      //       .duration(500)
-      //       .delay(function(d, i) { return i * 10; })
-      //       .attr("y", function(d) { return y(d.y0 + d.y); })
-      //       .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); })
-      //     .transition()
-      //       .attr("x", function(d) { return x(d.x); })
-      //       .attr("width", x.rangeBand());
-      // }
-      //
-      // // Inspired by Lee Byron's test data generator.
-      // function bumpLayer(n, o) {
-      //
-      //   function bump(a) {
-      //     var x = 1 / (.1 + Math.random()),
-      //         y = 2 * Math.random() - .5,
-      //         z = 10 / (.1 + Math.random());
-      //     for (var i = 0; i < n; i++) {
-      //       var w = (i / n - y) * z;
-      //       a[i] += x * Math.exp(-w * w);
-      //     }
-      //   }
-      //
-      //   var a = [], i;
-      //   for (i = 0; i < n; ++i) a[i] = o + o * Math.random();
-      //   for (i = 0; i < 5; ++i) bump(a);
-      //   return a.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });
-      // }
-      // =====================================================================================*/
-      // D3 Chart
-      // =====================================================================================*/
-
-    }
-
-
-    function Goals() {
+}
+//  ====================================================================
+Goals.$inject = ['StrFactory']
+    function Goals(StrFactory) {
       console.log('Goals Controller reporting for duty!')
 
       var Goals = this;
+
+      Goals.addGoal = function(name, goal, current, byWhen) {
+        StrFactory.addGoal(name, goal, current, byWhen)
+        Goals.name=''  //clear the form value for the input
+        Goals.goal=''
+        Goals.current=''
+        Goals.byWhen=''
+      }
+
 
       Goals.accent= {}
 
@@ -376,10 +268,3 @@ angular.module('App').config(function ($routeProvider) {
 //       console.log('locationPath: ' + nc.locationPath );
 //     });
 //   }
-
-/*// =====================================================================================
-// D3 Chart
-// =====================================================================================*/
-// ==================================================== git: alsdean/smart-compost
-//
-//
