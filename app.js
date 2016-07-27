@@ -20,12 +20,13 @@ angular.module('App')
           .data(data)
         .enter().append("div")
           .style("width", function(d) { return x(d) + "px"; })
-          .text(function(d) { return d; });
+          .text(function(d) { return d; })
+          .text("Squats", "Deadlifts", "Bench");
 
       /*// =====================================================================================
       // D3 Chart
       // =====================================================================================*/
-      // var d = {
+      // var data = {
       //   y: [1, 4, 6, 8, 10, 15],
       //   y0: [2, 5, 7, 9, 11, 16]
       // }
