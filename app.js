@@ -115,7 +115,7 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
         return d;
     }
 
-    render(data)
+    render(data);
     // =================================================================================
     // Speed Chart
     // ==============================================================================
@@ -138,15 +138,9 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
     var innerWidth = outerWidth - margin.left - margin.right;
     var innerHeight = outerHeight - margin.top - margin.bottom;
 
-    var xScale = d3.scale.linear().range([0, innerWidth]);
-    var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding);
-
     var svg = d3.select(".spdChart").append("svg")
         .attr("width", outerWidth)
         .attr("height", outerHeight);
-
-
-
     var g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     var xAxisG = g.append("g")
@@ -154,6 +148,9 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
         .attr("transform", "translate(0," + innerHeight + ")");
     var yAxisG = g.append("g")
         .attr("class", "y axis");
+
+    var xScale = d3.scale.linear().range([0, innerWidth]);
+    var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding);
 
     var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
         .ticks(5) // Use approximately 5 ticks marks.
@@ -174,38 +171,23 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
         xAxisG.call(xAxis);
         yAxisG.call(yAxis);
 
-        var layer1 = svg.selectAll(".layer1")
-            .data(data)
-          layer1.enter().append("g")
-            .attr("class", "layer1")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-            .style("fill", "white");
-            layer1.exit().remove()
-
-        var layer2 = svg.selectAll(".layer2")
-            .data(data)
-          layer2.enter().append("g")
-            .attr("class", "layer2")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-            .style("fill", "black");
-            layer2.exit().remove()
-
-
-        var rect1 = layer1.selectAll("rect")
-            .data(data)
-          .enter().append("rect")
-            .attr("x", 0)
-            .attr("y", height)
-            .attr("width", function(d) { console.log(d);return xScale(d.current); })
+        var bars = g.selectAll("rect").data(data);
+        bars.enter().append("rect")
             .attr("height", yScale.rangeBand());
-
-        var rect2 = layer2.selectAll("rect")
-            .data(data)
-          .enter().append("rect")
+        bars
             .attr("x", 0)
-            .attr("y", height)
-            .attr("width", function(d) { return xScale(d.current - d.goal); })
-            .attr("height", yScale.rangeBand());
+            .attr("y", function(d) {
+                return yScale(d[yColumn]);
+            })
+            .attr("width", function(d) {
+                return xScale(d[xColumn]);
+            })
+            .append("rect")
+                .attr("height", yScale.rangeBand())
+                .attr("width", function(d) {
+                    return xScale(100);
+                })
+        bars.exit().remove();
     }
 
     function type(d) {
@@ -213,106 +195,87 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
         return d;
     }
 
-    render(data)
+    render(data);
 
     // =======================================================================
     // Finance Chart
     // =======================================================================
+    var data = FinFactory.goalArray;
 
-    var data = [{
-        month: 'Jan',
-        A: 20,
-        B: 5
-    }, {
-        month: 'Feb',
-        A: 30,
-        B: 10
-    }];
-
-    var xData = ["A", "B"];
-
+    var outerWidth = 500;
+    var outerHeight = 250;
     var margin = {
-            top: 20,
-            right: 50,
-            bottom: 30,
-            left: 50
-        },
-        width = 400 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+        left: 200,
+        top: 0,
+        right: 50,
+        bottom: 30
+    };
+    var barPadding = 0.2;
 
-    var x = d3.scale.ordinal()
-        .rangeRoundBands([0, width], .35);
+    var xColumn = "current";
+    var yColumn = "name";
 
-    var y = d3.scale.linear()
-        .rangeRound([height, 0]);
-
-    var color = d3.scale.category20();
-
-    var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("bottom");
-
-    var xyAxis = d3.svg.axis()
-        .scale(y)
-        .orient("left");
+    var innerWidth = outerWidth - margin.left - margin.right;
+    var innerHeight = outerHeight - margin.top - margin.bottom;
 
     var svg = d3.select(".finChart").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
+        .attr("width", outerWidth)
+        .attr("height", outerHeight);
+    var g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    var xAxisG = g.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + innerHeight + ")");
+    var yAxisG = g.append("g")
+        .attr("class", "y axis");
 
-    var dataIntermediate = xData.map(function(c) {
-        return data.map(function(d) {
-            return {
-                x: d.month,
-                y: d[c]
-            };
-        });
-    });
+    var xScale = d3.scale.linear().range([0, innerWidth]);
+    var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding);
 
-    var dataStackLayout = d3.layout.stack()(dataIntermediate);
+    var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+        .ticks(5) // Use approximately 5 ticks marks.
+        .tickFormat(d3.format("s")) // Use intelligent abbreviations, e.g. 5M for 5 Million
+        .outerTickSize(0); // Turn off the marks at the end of the axis.
+    var yAxis = d3.svg.axis().scale(yScale).orient("left")
+        .outerTickSize(0); // Turn off the marks at the end of the axis.
 
-    x.domain(dataStackLayout[0].map(function(d) {
-        return d.x;
-    }));
+    function render(data) {
 
-    y.domain([0,
-            d3.max(dataStackLayout[dataStackLayout.length - 1],
-                function(d) {
-                    return d.y0 + d.y;
+        xScale.domain([0, d3.max(data, function(d) {
+            return d[xColumn];
+        })]);
+        yScale.domain(data.map(function(d) {
+            return d[yColumn];
+        }));
+
+        xAxisG.call(xAxis);
+        yAxisG.call(yAxis);
+
+        var bars = g.selectAll("rect").data(data);
+        bars.enter().append("rect")
+            .attr("height", yScale.rangeBand());
+        bars
+            .attr("x", 0)
+            .attr("y", function(d) {
+                return yScale(d[yColumn]);
+            })
+            .attr("width", function(d) {
+                return xScale(d[xColumn]);
+            })
+            .append("rect")
+                .attr("height", yScale.rangeBand())
+                .attr("width", function(d) {
+                    return xScale(100);
                 })
-        ])
-        .nice();
+        bars.exit().remove();
+    }
 
-    var layer = svg.selectAll(".stack")
-        .data(dataStackLayout)
-        .enter().append("g")
-        .attr("class", "stack")
-        .style("fill", function(d, i) {
-            return color(i);
-        });
+    function type(d) {
+        d.population = +d.population;
+        return d;
+    }
 
-    layer.selectAll("rect")
-        .data(function(d) {
-            return d;
-        })
-        .enter().append("rect")
-        .attr("x", function(d) {
-            return x(d.x);
-        })
-        .attr("y", function(d) {
-            return y(d.y + d.y0);
-        })
-        .attr("height", function(d) {
-            return y(d.y0) - y(d.y + d.y0);
-        })
-        .attr("width", x.rangeBand());
-
-    svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+    render(data);
 
 } //This closes the Chart Controller
 
@@ -453,3 +416,102 @@ function Goals(StrFactory, SpdFactory, FinFactory) {
         }
     };
 };
+
+// =======================================================================
+// Finance Chart
+// =======================================================================
+//
+// var data = [{
+//     month: 'Jan',
+//     A: 20,
+//     B: 5
+// }, {
+//     month: 'Feb',
+//     A: 30,
+//     B: 10
+// }];
+//
+// var xData = ["A", "B"];
+//
+// var margin = {
+//         top: 20,
+//         right: 50,
+//         bottom: 30,
+//         left: 50
+//     },
+//     width = 400 - margin.left - margin.right,
+//     height = 300 - margin.top - margin.bottom;
+//
+// var x = d3.scale.ordinal()
+//     .rangeRoundBands([0, width], .35);
+//
+// var y = d3.scale.linear()
+//     .rangeRound([height, 0]);
+//
+// var color = d3.scale.category20();
+//
+// var xAxis = d3.svg.axis()
+//     .scale(x)
+//     .orient("bottom");
+//
+// var xyAxis = d3.svg.axis()
+//     .scale(y)
+//     .orient("left");
+//
+// var svg = d3.select(".finChart").append("svg")
+//     .attr("width", width + margin.left + margin.right)
+//     .attr("height", height + margin.top + margin.bottom)
+//     .append("g")
+//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+//
+// var dataIntermediate = xData.map(function(c) {
+//     return data.map(function(d) {
+//         return {
+//             x: d.month,
+//             y: d[c]
+//         };
+//     });
+// });
+//
+// var dataStackLayout = d3.layout.stack()(dataIntermediate);
+//
+// x.domain(dataStackLayout[0].map(function(d) {
+//     return d.x;
+// }));
+//
+// y.domain([0,
+//         d3.max(dataStackLayout[dataStackLayout.length - 1],
+//             function(d) {
+//                 return d.y0 + d.y;
+//             })
+//     ])
+//     .nice();
+//
+// var layer = svg.selectAll(".stack")
+//     .data(dataStackLayout)
+//     .enter().append("g")
+//     .attr("class", "stack")
+//     .style("fill", function(d, i) {
+//         return color(i);
+//     });
+//
+// layer.selectAll("rect")
+//     .data(function(d) {
+//         return d;
+//     })
+//     .enter().append("rect")
+//     .attr("x", function(d) {
+//         return x(d.x);
+//     })
+//     .attr("y", function(d) {
+//         return y(d.y + d.y0);
+//     })
+//     .attr("height", function(d) {
+//         return y(d.y0) - y(d.y + d.y0);
+//     })
+//     .attr("width", x.rangeBand());
+//
+// svg.append("g")
+//     .attr("class", "axis")
+//     .attr("transform", "translate(0," + height + ")")
+//     .call(xAxis);
