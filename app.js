@@ -101,7 +101,12 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
             })
             .attr("width", function(d) {
                 return xScale(d[xColumn]);
-            });
+            })
+            .append("rect")
+                .attr("height", yScale.rangeBand())
+                .attr("width", function(d) {
+                    return xScale(100);
+                })
         bars.exit().remove();
     }
 
@@ -133,9 +138,15 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
     var innerWidth = outerWidth - margin.left - margin.right;
     var innerHeight = outerHeight - margin.top - margin.bottom;
 
+    var xScale = d3.scale.linear().range([0, innerWidth]);
+    var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding);
+
     var svg = d3.select(".spdChart").append("svg")
         .attr("width", outerWidth)
         .attr("height", outerHeight);
+
+
+
     var g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     var xAxisG = g.append("g")
@@ -143,9 +154,6 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
         .attr("transform", "translate(0," + innerHeight + ")");
     var yAxisG = g.append("g")
         .attr("class", "y axis");
-
-    var xScale = d3.scale.linear().range([0, innerWidth]);
-    var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding);
 
     var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
         .ticks(5) // Use approximately 5 ticks marks.
@@ -166,18 +174,38 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
         xAxisG.call(xAxis);
         yAxisG.call(yAxis);
 
-        var bars = g.selectAll("rect").data(data);
-        bars.enter().append("rect")
-            .attr("height", yScale.rangeBand());
-        bars
+        var layer1 = svg.selectAll(".layer1")
+            .data(data)
+          layer1.enter().append("g")
+            .attr("class", "layer1")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .style("fill", "white");
+            layer1.exit().remove()
+
+        var layer2 = svg.selectAll(".layer2")
+            .data(data)
+          layer2.enter().append("g")
+            .attr("class", "layer2")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .style("fill", "black");
+            layer2.exit().remove()
+
+
+        var rect1 = layer1.selectAll("rect")
+            .data(data)
+          .enter().append("rect")
             .attr("x", 0)
-            .attr("y", function(d) {
-                return yScale(d[yColumn]);
-            })
-            .attr("width", function(d) {
-                return xScale(d[xColumn]);
-            });
-        bars.exit().remove();
+            .attr("y", height)
+            .attr("width", function(d) { console.log(d);return xScale(d.current); })
+            .attr("height", yScale.rangeBand());
+
+        var rect2 = layer2.selectAll("rect")
+            .data(data)
+          .enter().append("rect")
+            .attr("x", 0)
+            .attr("y", height)
+            .attr("width", function(d) { return xScale(d.current - d.goal); })
+            .attr("height", yScale.rangeBand());
     }
 
     function type(d) {
@@ -187,7 +215,7 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
 
     render(data)
 
-    // ======================================================================
+    // =======================================================================
     // Finance Chart
     // =======================================================================
 
@@ -312,7 +340,7 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
             var newStrGoal = new StrGoal(name, goal, current, byWhen)
             str.goalArray.push(newStrGoal)
 
-            console.log("new object array", str.goalArray)
+            console.log("new STRENGTH object array", str.goalArray)
         }
         return str;
     }

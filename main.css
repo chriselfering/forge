@@ -103,6 +103,10 @@
   height: 100px;
 }
 
+.divBreakTiny {
+  height: 10px;
+}
+
 .navBar {
   margin-right: 10px;
   margin-top: 10px;
