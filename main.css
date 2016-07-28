@@ -180,6 +180,7 @@
   margin-left: 10px;
   background-color: #ff6d00; orange;
   padding: 50px;
+  width: 100%;
 }
 
 .chartDivFin {
@@ -187,33 +188,8 @@
   margin-left: 10px;
   background-color: #8ae429; green;
   padding: 50px;
+  width: 100%;
 }
-/*// =====================================================================================
-// D3 Chart
-// =====================================================================================*/
-
-/*.chart div {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: auto;
-  position: relative;
-  width: 960px;
-  height: 960px;
-  font: 10px sans-serif;
-}
-
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-form {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}*/
 
 /*// =====================================================================================
 // Horizontal Bar Chart
