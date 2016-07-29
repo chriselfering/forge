@@ -220,3 +220,22 @@
 .arc path {
   stroke: #fff;
 }
+
+.chart {
+    position: relative;
+}
+.chart .layer {
+    font-size: 0.5em;
+    font-family: sans-serif;
+    color: white;
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+.chart .layer.one {
+    background-color: steelblue;
+}
+.chart .layer.two {
+    background-color: indianred;
+    position: absolute;
+}

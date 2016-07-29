@@ -23,13 +23,13 @@
 
 <!-- row2 -->
 <div class="flexBox">
-  <div class="box" ng-click="Goals.setAccent()">
+  <div ng-style="Goals.accent2" class="box" ng-click="Goals.setAccent2()">
     <div ng-click="str = !str" ng-show="phys" class="iconDivPhys">
         <img src="assets/strength.png" class="icon2" />
         <h2 class="physText"> STRENGTH </h2>
     </div>
     </div>
-    <div class="box" ng-click="Goals.setAccent()">
+    <div ng-style="Goals.accent3" class="box" ng-click="Goals.setAccent3()">
     <div ng-click="spd = !spd" ng-show="phys" class="iconDivPhys">
         <img src="assets/speed.png" class="icon2" />
         <h2 class="physText"> SPEED </h2>
@@ -58,6 +58,7 @@
         </form>
         <br>
     </div>
+
 
 <!-- Speed Form ============================================================-->
     <div ng-show="spd" class="inputTitle">
@@ -92,3 +93,4 @@
       </form>
       <br>
     </div>
+</div> 

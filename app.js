@@ -116,10 +116,9 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
     }
 
     render(data);
-    // =================================================================================
+    // ==============================================================================
     // Speed Chart
     // ==============================================================================
-
     var data = SpdFactory.goalArray;
 
     var outerWidth = 500;
@@ -196,6 +195,60 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
     }
 
     render(data);
+
+
+    // var spdData = SpdFactory.goalArray;
+    //
+    //     var scale = d3.scale.linear()
+    //    .domain([0, 50])
+    //    .range([0, 100]);
+    //
+    // function draw(selector, spdData) {
+    //     var goal = spdData.map(function(elem){
+    //         return elem.goal
+    //     })
+    //
+    //     var current = spdData.map(function(elem){
+    //         return elem.current
+    //     })
+    //
+    //    var bars = d3.select(selector)
+    //        .selectAll("div.layer.one")
+    //        .spdData(goal);
+    //
+    //    // enter selection
+    //    bars.enter()
+    //        .append("div")
+    //        .attr('class','layer one');
+    //
+    //    // update selection
+    //    bars.style("width", barScale).text(barText);
+    //
+    //    // exit selection
+    //    bars.exit().remove();
+    //
+    //    var bars2 = d3.select(selector)
+    //        .selectAll("div.layer.two")
+    //        .data(current)
+    //
+    //    bars2.enter()
+    //        .append("div")
+    //        .attr('class','layer two');
+    //
+    //    bars2.style("width", barScale). style("top", topper).text(barText);
+    //
+    //    bars2.exit().remove();
+    // }
+    // // window.draw = draw;
+    // function topper(d,i) {
+    //    return i*35 +'px';
+    // }
+    // function barScale(d) {
+    //    return scale(d) + "%";
+    // }
+    // function barText(d) {
+    //    return d;
+    // }
 
     // =======================================================================
     // Finance Chart
@@ -276,6 +329,83 @@ function ChartCtrl(StrFactory, SpdFactory, FinFactory) {
     }
 
     render(data);
+
+    // var data = FinFactory.goalArray;
+    //
+    // var outerWidth = 500;
+    // var outerHeight = 250;
+    // var margin = {
+    //     left: 200,
+    //     top: 0,
+    //     right: 50,
+    //     bottom: 30
+    // };
+    // var barPadding = 0.2;
+    //
+    // var xColumn = "current";
+    // var yColumn = "name";
+    //
+    // var innerWidth = outerWidth - margin.left - margin.right;
+    // var innerHeight = outerHeight - margin.top - margin.bottom;
+    //
+    // var svg = d3.select(".finChart").append("svg")
+    //     .attr("width", outerWidth)
+    //     .attr("height", outerHeight);
+    // var g = svg.append("g")
+    //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    // var xAxisG = g.append("g")
+    //     .attr("class", "x axis")
+    //     .attr("transform", "translate(0," + innerHeight + ")");
+    // var yAxisG = g.append("g")
+    //     .attr("class", "y axis");
+    //
+    // var xScale = d3.scale.linear().range([0, innerWidth]);
+    // var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding);
+    //
+    // var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+    //     .ticks(5) // Use approximately 5 ticks marks.
+    //     .tickFormat(d3.format("s")) // Use intelligent abbreviations, e.g. 5M for 5 Million
+    //     .outerTickSize(0); // Turn off the marks at the end of the axis.
+    // var yAxis = d3.svg.axis().scale(yScale).orient("left")
+    //     .outerTickSize(0); // Turn off the marks at the end of the axis.
+    //
+    // function render(data) {
+    //
+    //     xScale.domain([0, d3.max(data, function(d) {
+    //         return d[xColumn];
+    //     })]);
+    //     yScale.domain(data.map(function(d) {
+    //         return d[yColumn];
+    //     }));
+    //
+    //     xAxisG.call(xAxis);
+    //     yAxisG.call(yAxis);
+    //
+    //     var bars = g.selectAll("rect").data(data);
+    //     bars.enter().append("rect")
+    //         .attr("height", yScale.rangeBand());
+    //     bars
+    //         .attr("x", 0)
+    //         .attr("y", function(d) {
+    //             return yScale(d[yColumn]);
+    //         })
+    //         .attr("width", function(d) {
+    //             return xScale(d[xColumn]);
+    //         })
+    //         .append("rect")
+    //             .attr("height", yScale.rangeBand())
+    //             .attr("width", function(d) {
+    //                 return xScale(100);
+    //             })
+    //     bars.exit().remove();
+    // }
+    //
+    // function type(d) {
+    //     d.population = +d.population;
+    //     return d;
+    // }
+    //
+    // render(data);
 
 } //This closes the Chart Controller
 
@@ -375,28 +505,32 @@ function Goals(StrFactory, SpdFactory, FinFactory) {
 
     var Goals = this;
 
+    Goals.phys  = true;
+    Goals.fin   = true;
+    // Goals.accent = {};
+
     Goals.addStrGoal = function(name, goal, current, byWhen) {
         StrFactory.addStrGoal(name, goal, current, byWhen)
-        Goals.name = '' //clear the form value for the input
-        Goals.goal = ''
-        Goals.current = ''
-        Goals.byWhen = ''
+        Goals.strName = '' //clear the form value for the input
+        Goals.strGoal = ''
+        Goals.strCurrent = ''
+        Goals.strByWhen = ''
     }
 
     Goals.addSpdGoal = function(name, goal, current, byWhen) {
         SpdFactory.addSpdGoal(name, goal, current, byWhen)
-        Goals.name = '' //clear the form value for the input
-        Goals.goal = ''
-        Goals.current = ''
-        Goals.byWhen = ''
+        Goals.spdName = '' //clear the form value for the input
+        Goals.spdGoal = ''
+        Goals.spdCurrent = ''
+        Goals.spdByWhen = ''
     }
 
     Goals.addFinGoal = function(name, goal, current, byWhen) {
         FinFactory.addFinGoal(name, goal, current, byWhen)
-        Goals.name = '' //clear the form value for the input
-        Goals.goal = ''
-        Goals.current = ''
-        Goals.byWhen = ''
+        Goals.finName = '' //clear the form value for the input
+        Goals.finGoal = ''
+        Goals.finCurrent = ''
+        Goals.finByWhen = ''
     }
 
     // ===============================================================
@@ -405,15 +539,47 @@ function Goals(StrFactory, SpdFactory, FinFactory) {
     Goals.accent = {}
 
     Goals.setAccent = function() {
-        Goals.accent = {
-            'border-radius': '20px',
-            'position': 'relative',
-            'transition-property': 'background-color, color',
-            'transition-duration': '1s',
-            'transition-timing-function': 'ease-out',
-            'background-color': '#1f0971',
-            'padding-bottom': '7px'
-        }
+        if(Object.keys(Goals.accent).length === 0) {
+            Goals.accent = {
+                'border-radius': '20px',
+                'position': 'relative',
+                'transition-property': 'background-color, color',
+                'transition-duration': '1s',
+                'transition-timing-function': 'ease-out',
+                'background-color': '#1f0971',
+                'padding-bottom': '7px'
+            }
+        } else {Goals.accent = {}}
+    };
+    Goals.accent2 = {}
+
+    Goals.setAccent2 = function() {
+        if(Object.keys(Goals.accent2).length === 0) {
+            Goals.accent2 = {
+                'border-radius': '20px',
+                'position': 'relative',
+                'transition-property': 'background-color, color',
+                'transition-duration': '1s',
+                'transition-timing-function': 'ease-out',
+                'background-color': '#1f0971',
+                'padding-bottom': '7px'
+            }
+        } else {Goals.accent2 = {}}
+    };
+    Goals.accent3 = {}
+
+    Goals.setAccent3 = function() {
+        if(Object.keys(Goals.accent3).length === 0) {
+            Goals.accent3 = {
+                'border-radius': '20px',
+                'position': 'relative',
+                'transition-property': 'background-color, color',
+                'transition-duration': '1s',
+                'transition-timing-function': 'ease-out',
+                'background-color': '#1f0971',
+                'padding-bottom': '7px'
+            }
+        } else {Goals.accent3 = {}}
     };
 };
 
